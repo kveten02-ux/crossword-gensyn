@@ -4,21 +4,23 @@ class GensynCrossword {
         this.currentCell = null;
         this.currentWord = null;
         this.answers = {
-            1: 'GENSYN',        // down: "The best project ever"
+            1: 'GENSYN',        // across: "The best project ever"
             2: 'MODERATORS',    // across: "Network members who provide resources"
             3: 'AI',            // across: "Technology that is taught at Gensyn"
-            4: 'MODS',          // across: "Chat Guards"
-            5: 'VERIFICATION',  // across: "The process of confirming the correctness of calculations"
-            6: 'VALIDATOR'      // down: "One who secures the chain by staking and verifying blocks"
+            4: 'NODES',         // down: "Network members who provide resources"
+            5: 'MODS',          // across: "Chat Guards"
+            6: 'VERIFICATION',  // across: "The process of confirming the correctness of calculations"
+            7: 'VALIDATOR'      // down: "One who secures the chain by staking and verifying blocks"
         };
 
         this.wordPositions = {
-            1: { start: [2, 1], direction: 'down', length: 6 },      // GENSYN (vertical, left side)
-            2: { start: [3, 1], direction: 'across', length: 10 },   // MODERATORS (horizontal)
-            3: { start: [7, 6], direction: 'across', length: 2 },    // AI (horizontal, short)
-            4: { start: [4, 0], direction: 'across', length: 4 },    // MODS (horizontal)
-            5: { start: [10, 0], direction: 'across', length: 12 },  // VERIFICATION (long horizontal)
-            6: { start: [2, 13], direction: 'down', length: 9 }      // VALIDATOR (vertical, right side)
+            1: { start: [6, 1], direction: 'across', length: 6 },    // GENSYN (горизонтально)
+            2: { start: [3, 1], direction: 'across', length: 10 },   // MODERATORS (горизонтально)
+            3: { start: [8, 7], direction: 'across', length: 2 },    // AI (горизонтально)
+            4: { start: [1, 3], direction: 'down', length: 5 },      // NODES (вертикально)
+            5: { start: [3, 0], direction: 'across', length: 4 },    // MODS (горизонтально)
+            6: { start: [10, 0], direction: 'across', length: 12 },  // VERIFICATION (горизонтально)
+            7: { start: [1, 12], direction: 'down', length: 9 }      // VALIDATOR (вертикально)
         };
 
         this.grid = this.initializeGrid();

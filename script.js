@@ -1,26 +1,24 @@
 class GensynCrossword {
     constructor() {
-        this.gridSize = { rows: 13, cols: 16 };
+        this.gridSize = { rows: 14, cols: 16 };
         this.currentCell = null;
         this.currentWord = null;
         this.answers = {
-            1: 'GENSYN',      // down
-            2: 'MODERATORS',  // across
-            3: 'AI',          // across
-            4: 'NODES',       // down
-            5: 'MODS',        // across
-            6: 'VERIFICATION', // across
-            7: 'VALIDATOR'    // down
+            1: 'GENSYN',        // down: "The best project ever"
+            2: 'MODERATORS',    // across: "Network members who provide resources"
+            3: 'AI',            // across: "Technology that is taught at Gensyn"
+            4: 'MODS',          // across: "Chat Guards"
+            5: 'VERIFICATION',  // across: "The process of confirming the correctness of calculations"
+            6: 'VALIDATOR'      // down: "One who secures the chain by staking and verifying blocks"
         };
 
         this.wordPositions = {
-            1: { start: [1, 6], direction: 'down', length: 6 },      // GENSYN
-            2: { start: [5, 0], direction: 'across', length: 10 },   // MODERATORS
-            3: { start: [8, 6], direction: 'across', length: 2 },    // AI
-            4: { start: [0, 3], direction: 'down', length: 5 },      // NODES
-            5: { start: [4, 0], direction: 'across', length: 4 },    // MODS
-            6: { start: [10, 0], direction: 'across', length: 12 },  // VERIFICATION
-            7: { start: [0, 12], direction: 'down', length: 9 }      // VALIDATOR
+            1: { start: [2, 1], direction: 'down', length: 6 },      // GENSYN (vertical, left side)
+            2: { start: [3, 1], direction: 'across', length: 10 },   // MODERATORS (horizontal)
+            3: { start: [7, 6], direction: 'across', length: 2 },    // AI (horizontal, short)
+            4: { start: [4, 0], direction: 'across', length: 4 },    // MODS (horizontal)
+            5: { start: [10, 0], direction: 'across', length: 12 },  // VERIFICATION (long horizontal)
+            6: { start: [2, 13], direction: 'down', length: 9 }      // VALIDATOR (vertical, right side)
         };
 
         this.grid = this.initializeGrid();
@@ -284,6 +282,7 @@ class GensynCrossword {
 
     checkAnswers() {
         let allCorrect = true;
+        let completedWords = 0;
 
         for (const [wordNum, answer] of Object.entries(this.answers)) {
             const pos = this.wordPositions[wordNum];
@@ -306,6 +305,12 @@ class GensynCrossword {
             }
 
             // Color cells based on correctness
+            let wordCorrect = false;
+            if (allFilled && currentAnswer === answer) {
+                wordCorrect = true;
+                completedWords++;
+            }
+
             for (let i = 0; i < length; i++) {
                 const row = direction === 'down' ? startRow + i : startRow;
                 const col = direction === 'across' ? startCol + i : startCol;
@@ -314,31 +319,24 @@ class GensynCrossword {
                 if (input && input.parentElement) {
                     input.parentElement.classList.remove('filled', 'error');
 
-                    if (input.value && allFilled) {
-                        if (currentAnswer === answer) {
+                    if (input.value) {
+                        if (allFilled && wordCorrect) {
                             input.parentElement.classList.add('filled');
-                        } else {
+                        } else if (allFilled && !wordCorrect) {
                             input.parentElement.classList.add('error');
-                            allCorrect = false;
                         }
-                    } else if (!allFilled) {
-                        allCorrect = false;
                     }
                 }
+            }
+
+            if (!wordCorrect) {
+                allCorrect = false;
             }
         }
 
         // Check if crossword is completed
-        if (allCorrect) {
-            const allInputs = document.querySelectorAll('input');
-            let totalFilled = 0;
-            allInputs.forEach(input => {
-                if (input.value) totalFilled++;
-            });
-
-            if (totalFilled === allInputs.length) {
-                this.showCompletion();
-            }
+        if (completedWords === Object.keys(this.answers).length) {
+            this.showCompletion();
         }
     }
 

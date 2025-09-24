@@ -16,9 +16,9 @@ class GensynCrossword {
         this.wordPositions = {
             1: { start: [6, 1], direction: 'across', length: 6 },    // GENSYN (горизонтально)
             2: { start: [6, 4], direction: 'down', length: 5 },      // SWARN (вертикально от S в GENSYN [6,4])
-            3: { start: [8, 7], direction: 'across', length: 2 },    // AI (горизонтально)
-            4: { start: [1, 3], direction: 'down', length: 5 },      // NODES (вертикально)
-            5: { start: [3, 1], direction: 'across', length: 10 },   // MODERATORS (горизонтально)
+            3: { start: [8, 4], direction: 'across', length: 2 },    // AI (горизонтально от A в SWARN [8,4])
+            4: { start: [6, 2], direction: 'down', length: 5 },      // NODES (вертикально от E в GENSYN [6,2])
+            5: { start: [7, 2], direction: 'across', length: 10 },   // MODERATORS (горизонтально, пересекается с O в NODES)
             6: { start: [10, 0], direction: 'across', length: 12 },  // VERIFICATION (горизонтально)
             7: { start: [1, 13], direction: 'down', length: 9 }      // VALIDATOR (вертикально)
         };

@@ -1,6 +1,6 @@
 class GensynCrossword {
     constructor() {
-        this.gridSize = { rows: 14, cols: 16 };
+        this.gridSize = { rows: 18, cols: 12 };
         this.currentCell = null;
         this.currentWord = null;
         this.answers = {
@@ -14,13 +14,13 @@ class GensynCrossword {
         };
 
         this.wordPositions = {
-            1: { start: [2, 0], direction: 'across', length: 6 },    // GENSYN (горизонтально: G-E-N-S-Y-N)
-            2: { start: [2, 3], direction: 'down', length: 5 },      // SWARM (вертикально от S в GENSYN: S-W-A-R-M)
-            3: { start: [4, 3], direction: 'across', length: 2 },    // AI (горизонтально от A в SWARM: A-I)
-            4: { start: [0, 1], direction: 'down', length: 5 },      // NODES (вертикально от E в GENSYN: N-O-D-E-S)
-            5: { start: [1, 0], direction: 'across', length: 10 },   // MODERATORS (горизонтально, пересекается с O в NODES)
-            6: { start: [4, 1], direction: 'across', length: 12 },   // VERIFICATION (горизонтально, пересекается с R в SWARM)
-            7: { start: [4, 11], direction: 'down', length: 9 }      // VALIDATOR (вертикально от O в VERIFICATION)
+            1: { start: [4, 2], direction: 'across', length: 6 },    // GENSYN (G-E-N-S-Y-N) горизонтально
+            2: { start: [4, 5], direction: 'down', length: 5 },      // SWARM (S-W-A-R-M) вертикально от N в GENSYN
+            3: { start: [6, 5], direction: 'across', length: 2 },    // AI (A-I) горизонтально от A в SWARM
+            4: { start: [0, 5], direction: 'down', length: 5 },      // NODES (N-O-D-E-S) вертикально, пересекается с GENSYN в N
+            5: { start: [1, 0], direction: 'across', length: 10 },   // MODERATORS (M-O-D-E-R-A-T-O-R-S) горизонтально, пересекается с NODES в O
+            6: { start: [9, 0], direction: 'across', length: 12 },   // VERIFICATION (V-E-R-I-F-I-C-A-T-I-O-N) горизонтально
+            7: { start: [9, 0], direction: 'down', length: 9 }       // VALIDATOR (V-A-L-I-D-A-T-O-R) вертикально, пересекается с VERIFICATION в V
         };
 
         this.grid = this.initializeGrid();

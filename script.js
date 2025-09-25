@@ -5,7 +5,7 @@ class GensynCrossword {
         this.currentWord = null;
         this.answers = {
             1: 'GENSYN',        // across: "The best project ever"
-            2: 'SWARN',         // down: "The role in DC of AI co-education" (от буквы S в GENSYN)
+            2: 'SWARM',         // down: "The role in DC of AI co-education" (от буквы S в GENSYN)
             3: 'AI',            // across: "Technology that is taught at Gensyn"
             4: 'NODES',         // down: "Network members who provide resources"
             5: 'MODERATORS',    // across: "Chat Guards"
@@ -14,13 +14,13 @@ class GensynCrossword {
         };
 
         this.wordPositions = {
-            1: { start: [6, 1], direction: 'across', length: 6 },    // GENSYN (горизонтально)
-            2: { start: [6, 4], direction: 'down', length: 5 },      // SWARN (вертикально от S в GENSYN [6,4])
-            3: { start: [8, 4], direction: 'across', length: 2 },    // AI (горизонтально от A в SWARN [8,4])
-            4: { start: [6, 2], direction: 'down', length: 5 },      // NODES (вертикально от E в GENSYN [6,2])
-            5: { start: [7, 2], direction: 'across', length: 10 },   // MODERATORS (горизонтально, пересекается с O в NODES)
-            6: { start: [10, 0], direction: 'across', length: 12 },  // VERIFICATION (горизонтально)
-            7: { start: [1, 13], direction: 'down', length: 9 }      // VALIDATOR (вертикально)
+            1: { start: [2, 0], direction: 'across', length: 6 },    // GENSYN (горизонтально: G-E-N-S-Y-N)
+            2: { start: [2, 3], direction: 'down', length: 5 },      // SWARM (вертикально от S в GENSYN: S-W-A-R-M)
+            3: { start: [4, 3], direction: 'across', length: 2 },    // AI (горизонтально от A в SWARM: A-I)
+            4: { start: [0, 1], direction: 'down', length: 5 },      // NODES (вертикально от E в GENSYN: N-O-D-E-S)
+            5: { start: [1, 0], direction: 'across', length: 10 },   // MODERATORS (горизонтально, пересекается с O в NODES)
+            6: { start: [4, 1], direction: 'across', length: 12 },   // VERIFICATION (горизонтально, пересекается с R в SWARM)
+            7: { start: [4, 11], direction: 'down', length: 9 }      // VALIDATOR (вертикально от O в VERIFICATION)
         };
 
         this.grid = this.initializeGrid();
